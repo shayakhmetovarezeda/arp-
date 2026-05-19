@@ -1,0 +1,228 @@
+{
+  "configuration" : {
+    "scope" : "SoftwareSystem"
+  },
+  "description" : "Система записи на курсы",
+  "documentation" : { },
+  "id" : 1,
+  "lastModifiedDate" : "2026-04-09T23:46:36Z",
+  "model" : {
+    "people" : [ {
+      "description" : "Записывается на курсы",
+      "id" : "1",
+      "name" : "Студент",
+      "properties" : {
+        "structurizr.dsl.identifier" : "student"
+      },
+      "relationships" : [ {
+        "description" : "Использует",
+        "destinationId" : "4",
+        "id" : "11",
+        "sourceId" : "1",
+        "tags" : "Relationship",
+        "technology" : "HTTPS"
+      }, {
+        "description" : "Использует",
+        "destinationId" : "3",
+        "id" : "12",
+        "linkedRelationshipId" : "11",
+        "sourceId" : "1",
+        "technology" : "HTTPS"
+      } ],
+      "tags" : "Element,Person"
+    }, {
+      "description" : "Создаёт курсы",
+      "id" : "2",
+      "name" : "Преподаватель",
+      "properties" : {
+        "structurizr.dsl.identifier" : "teacher"
+      },
+      "relationships" : [ {
+        "description" : "Управляет",
+        "destinationId" : "4",
+        "id" : "13",
+        "sourceId" : "2",
+        "tags" : "Relationship",
+        "technology" : "HTTPS"
+      }, {
+        "description" : "Управляет",
+        "destinationId" : "3",
+        "id" : "14",
+        "linkedRelationshipId" : "13",
+        "sourceId" : "2",
+        "technology" : "HTTPS"
+      } ],
+      "tags" : "Element,Person"
+    } ],
+    "softwareSystems" : [ {
+      "containers" : [ {
+        "description" : "HTML/JS",
+        "documentation" : { },
+        "id" : "4",
+        "name" : "Web Application",
+        "properties" : {
+          "structurizr.dsl.identifier" : "courseSystem.webApp"
+        },
+        "relationships" : [ {
+          "description" : "Отправляет запросы",
+          "destinationId" : "7",
+          "id" : "8",
+          "sourceId" : "4",
+          "tags" : "Relationship",
+          "technology" : "HTTP/REST"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Интерфейс"
+      }, {
+        "description" : "Python/FastAPI",
+        "documentation" : { },
+        "id" : "5",
+        "name" : "course-service",
+        "properties" : {
+          "structurizr.dsl.identifier" : "courseSystem.courseService"
+        },
+        "tags" : "Element,Container",
+        "technology" : "Каталог курсов"
+      }, {
+        "description" : "Python/FastAPI",
+        "documentation" : { },
+        "id" : "6",
+        "name" : "schedule-service",
+        "properties" : {
+          "structurizr.dsl.identifier" : "courseSystem.scheduleService"
+        },
+        "tags" : "Element,Container",
+        "technology" : "Расписание"
+      }, {
+        "description" : "Python/FastAPI",
+        "documentation" : { },
+        "id" : "7",
+        "name" : "enrollment-service",
+        "properties" : {
+          "structurizr.dsl.identifier" : "courseSystem.enrollmentService"
+        },
+        "relationships" : [ {
+          "description" : "Проверяет курсы",
+          "destinationId" : "5",
+          "id" : "9",
+          "sourceId" : "7",
+          "tags" : "Relationship",
+          "technology" : "HTTP/REST"
+        }, {
+          "description" : "Проверяет расписание",
+          "destinationId" : "6",
+          "id" : "10",
+          "sourceId" : "7",
+          "tags" : "Relationship",
+          "technology" : "HTTP/REST"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Запись студентов"
+      } ],
+      "description" : "Микросервисная система управления курсами",
+      "documentation" : { },
+      "id" : "3",
+      "name" : "Course Registration System",
+      "properties" : {
+        "structurizr.dsl.identifier" : "courseSystem"
+      },
+      "tags" : "Element,Software System"
+    } ]
+  },
+  "name" : "Course Registration System",
+  "properties" : {
+    "structurizr.inspection.error" : "2",
+    "structurizr.dsl" : "d29ya3NwYWNlICJDb3Vyc2UgUmVnaXN0cmF0aW9uIFN5c3RlbSIgItCh0LjRgdGC0LXQvNCwINC30LDQv9C40YHQuCDQvdCwINC60YPRgNGB0YsiIHsKCiAgICAhaWRlbnRpZmllcnMgaGllcmFyY2hpY2FsCgogICAgbW9kZWwgewogICAgICAgIHN0dWRlbnQgPSBwZXJzb24gItCh0YLRg9C00LXQvdGCIiAi0JfQsNC/0LjRgdGL0LLQsNC10YLRgdGPINC90LAg0LrRg9GA0YHRiyIKICAgICAgICB0ZWFjaGVyID0gcGVyc29uICLQn9GA0LXQv9C+0LTQsNCy0LDRgtC10LvRjCIgItCh0L7Qt9C00LDRkdGCINC60YPRgNGB0YsiCgogICAgICAgIGNvdXJzZVN5c3RlbSA9IHNvZnR3YXJlU3lzdGVtICJDb3Vyc2UgUmVnaXN0cmF0aW9uIFN5c3RlbSIgItCc0LjQutGA0L7RgdC10YDQstC40YHQvdCw0Y8g0YHQuNGB0YLQtdC80LAg0YPQv9GA0LDQstC70LXQvdC40Y8g0LrRg9GA0YHQsNC80LgiIHsKICAgICAgICAgICAgd2ViQXBwID0gY29udGFpbmVyICJXZWIgQXBwbGljYXRpb24iICJIVE1ML0pTIiAi0JjQvdGC0LXRgNGE0LXQudGBIgogICAgICAgICAgICBjb3Vyc2VTZXJ2aWNlID0gY29udGFpbmVyICJjb3Vyc2Utc2VydmljZSIgIlB5dGhvbi9GYXN0QVBJIiAi0JrQsNGC0LDQu9C+0LMg0LrRg9GA0YHQvtCyIgogICAgICAgICAgICBzY2hlZHVsZVNlcnZpY2UgPSBjb250YWluZXIgInNjaGVkdWxlLXNlcnZpY2UiICJQeXRob24vRmFzdEFQSSIgItCg0LDRgdC/0LjRgdCw0L3QuNC1IgogICAgICAgICAgICBlbnJvbGxtZW50U2VydmljZSA9IGNvbnRhaW5lciAiZW5yb2xsbWVudC1zZXJ2aWNlIiAiUHl0aG9uL0Zhc3RBUEkiICLQl9Cw0L/QuNGB0Ywg0YHRgtGD0LTQtdC90YLQvtCyIgoKICAgICAgICAgICAgd2ViQXBwIC0+IGVucm9sbG1lbnRTZXJ2aWNlICLQntGC0L/RgNCw0LLQu9GP0LXRgiDQt9Cw0L/RgNC+0YHRiyIgIkhUVFAvUkVTVCIKICAgICAgICAgICAgZW5yb2xsbWVudFNlcnZpY2UgLT4gY291cnNlU2VydmljZSAi0J/RgNC+0LLQtdGA0Y/QtdGCINC60YPRgNGB0YsiICJIVFRQL1JFU1QiCiAgICAgICAgICAgIGVucm9sbG1lbnRTZXJ2aWNlIC0+IHNjaGVkdWxlU2VydmljZSAi0J/RgNC+0LLQtdGA0Y/QtdGCINGA0LDRgdC/0LjRgdCw0L3QuNC1IiAiSFRUUC9SRVNUIgogICAgICAgIH0KCiAgICAgICAgc3R1ZGVudCAtPiBjb3Vyc2VTeXN0ZW0ud2ViQXBwICLQmNGB0L/QvtC70YzQt9GD0LXRgiIgIkhUVFBTIgogICAgICAgIHRlYWNoZXIgLT4gY291cnNlU3lzdGVtLndlYkFwcCAi0KPQv9GA0LDQstC70Y/QtdGCIiAiSFRUUFMiCiAgICB9CgogICAgdmlld3MgewogICAgICAgIHN5c3RlbUNvbnRleHQgY291cnNlU3lzdGVtICJTeXN0ZW1Db250ZXh0IiB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvTGF5b3V0IGxyCiAgICAgICAgfQoKICAgICAgICBjb250YWluZXIgY291cnNlU3lzdGVtICJDb250YWluZXJzIiB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvTGF5b3V0IGxyCiAgICAgICAgfQogICAgfQoKICAgIGNvbmZpZ3VyYXRpb24gewogICAgICAgIHNjb3BlIHNvZnR3YXJlc3lzdGVtCiAgICB9Cn0=",
+    "structurizr.inspection.info" : "0",
+    "structurizr.inspection.ignore" : "0",
+    "structurizr.inspection.warning" : "0"
+  },
+  "views" : {
+    "configuration" : {
+      "styles" : { },
+      "terminology" : { }
+    },
+    "containerViews" : [ {
+      "automaticLayout" : {
+        "edgeSeparation" : 50,
+        "nodeSeparation" : 50,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 100,
+        "vertices" : true
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "2",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "4",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "5",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "6",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "7",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "key" : "Containers",
+      "name" : "Container View: Course Registration System",
+      "order" : 2,
+      "relationships" : [ {
+        "id" : "10"
+      }, {
+        "id" : "11"
+      }, {
+        "id" : "13"
+      }, {
+        "id" : "8"
+      }, {
+        "id" : "9"
+      } ],
+      "softwareSystemId" : "3"
+    } ],
+    "systemContextViews" : [ {
+      "automaticLayout" : {
+        "edgeSeparation" : 50,
+        "nodeSeparation" : 50,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 100,
+        "vertices" : true
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "2",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "3",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "key" : "SystemContext",
+      "name" : "System Context View: Course Registration System",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "12"
+      }, {
+        "id" : "14"
+      } ],
+      "softwareSystemId" : "3"
+    } ]
+  }
+}
